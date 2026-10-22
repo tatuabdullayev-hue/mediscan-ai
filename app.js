@@ -228,32 +228,41 @@ function autocomplete(input, list, onPick) {
 }
 
 // ---------- Gemini API ----------
+// Shared AI proxy (Google Apps Script, proxy/Code.gs): holds the API key server-side so the AI works for
+// every visitor without entering a key. A key saved in Settings is used directly instead.
+const PROXY_URL = "https://script.google.com/macros/s/AKfycby7pRVFhjPpberlTCAxiLZ53Qn4dWbuH85ohHtLAmhkwFx4f1vQZgKBVckpYz-tbYgR/exec";
 // Default to the fast "lite" model: answers in ~2 s instead of 30–60 s with the larger thinking models.
 function aiConfig() { return { key: store.get("key", ""), model: store.get("model", "") || "gemini-flash-lite-latest" }; }
+const aiAvailable = () => !!(aiConfig().key || PROXY_URL);
 let searchToolOff = false;   // set when the key's plan does not allow Google Search grounding (free tier)
 
 // search: true lets Gemini use Google Search and returns { text, sources } instead of text.
 async function gemini(contents, { system, json, search } = {}) {
   const { key, model } = aiConfig();
-  if (!key) throw new Error("nokey");
+  if (!key && !PROXY_URL) throw new Error("nokey");
   const body = { contents, generationConfig: { temperature: 0.3 } };
   if (system) body.systemInstruction = { parts: [{ text: system }] };
   if (json && !search) body.generationConfig.responseMimeType = "application/json";
   if (search) body.tools = [{ google_search: {} }];
-  let res;
+  let status, data;
   try {
-    res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`, {
-      method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": key }, body: JSON.stringify(body),
-    });
+    if (key) {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`, {
+        method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": key }, body: JSON.stringify(body),
+      });
+      status = res.status; data = await res.json().catch(() => ({}));
+    } else {
+      // text/plain keeps it a "simple" CORS request (no preflight), which Apps Script requires.
+      const res = await fetch(PROXY_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(body) });
+      const wrap = await res.json();
+      status = wrap.status; data = wrap.body || {};
+    }
   } catch { throw new Error("net"); }
-  if (res.status === 429) throw new Error("quota");
-  if (res.status === 404) throw new Error("model");
-  if ([400, 401, 403].includes(res.status)) {
-    const txt = await res.text();
-    throw new Error(/API key|API_KEY|PERMISSION/i.test(txt) ? "key" : "generic");
-  }
-  if (!res.ok) throw new Error("generic");
-  const data = await res.json();
+  if (status === 429) throw new Error("quota");
+  if (status === 404) throw new Error("model");
+  if (status === 503) throw new Error("nokey");
+  if ([400, 401, 403].includes(status)) throw new Error(/API key|API_KEY|PERMISSION/i.test(JSON.stringify(data)) ? "key" : "generic");
+  if (status < 200 || status >= 300) throw new Error("generic");
   const text = data?.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("") || "";
   if (!text) throw new Error("generic");
   if (!search) return text;
@@ -357,7 +366,7 @@ async function fileToBase64Jpeg(file, max = 1280) {
 $("#btnRecognize").onclick = async () => {
   if (!photoFile) return;
   const btn = $("#btnRecognize"); btn.disabled = true; $("#drugResult").innerHTML = "";
-  try { if (aiConfig().key) await recognizeWithAI(); else await recognizeWithOCR(); }
+  try { if (aiAvailable()) await recognizeWithAI(); else await recognizeWithOCR(); }
   finally { btn.disabled = false; }
 };
 
@@ -512,13 +521,13 @@ async function webLookup(q) {
   d.uz = { ...d.en, ...filled(locSec), about: uzPage?.extract || ruPage?.extract || wiki?.extract || d.en.about };  d.sources = [wiki, enPage, uzPage, ruPage].filter(Boolean).map(p => ({ title: `Wikipedia (${p.lang.toUpperCase()}): ${p.title}`, url: p.url }));
   if (fda) d.sources.push({ title: `U.S. FDA label (DailyMed): ${fda.names[1] || fda.names[0]}`, url: `https://dailymed.nlm.nih.gov/dailymed/search.cfm?query=${encodeURIComponent(fda.names[1] || enName)}` });
   d.sources = d.sources.filter((s, i, a) => s.url && a.findIndex(x => x.url === s.url) === i);
-  if (fda && aiConfig().key) { try { setStatus(t("translating"), "busy"); await translateDrug(d); if (uzPage) d.uz.about = uzPage.extract; } catch {} }
+  if (fda && aiAvailable()) { try { setStatus(t("translating"), "busy"); await translateDrug(d); if (uzPage) d.uz.about = uzPage.extract; } catch {} }
   return d;
 }
 
 // Online search for a typed/recognised name: AI + Google when a key is saved, otherwise Wikipedia + openFDA.
 async function searchOnline(name, generic, { noAI } = {}) {
-  if (aiConfig().key && !noAI) {
+  if (aiAvailable() && !noAI) {
     setStatus(t("aiWebLoading"), "busy");
     try { const r = await aiWebLookup({ name, generic }); if (r) { setStatus(""); showDrug(r.d, r.strength); return true; } }
     catch (e) { if (e.message === "net") { setStatus(t("errNet"), "error"); return false; } }

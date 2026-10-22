@@ -1,8 +1,8 @@
 // DoriYordam service worker: keeps the app shell available offline.
 // Only same-origin files are cached; AI, Wikipedia and FDA requests always go to the network.
-const CACHE = "doriyordam-v8";
+const CACHE = "doriyordam-v9";
 const SHELL = [
-  "./", "./index.html", "./style.css?v=8", "./drugs.js?v=8", "./db1.js?v=8", "./db2.js?v=8", "./db3.js?v=8", "./app.js?v=8",
+  "./", "./index.html", "./style.css?v=9", "./drugs.js?v=9", "./db1.js?v=9", "./db2.js?v=9", "./db3.js?v=9", "./app.js?v=9",
   "./icon.svg", "./icons/icon-192.png", "./icons/icon-512.png", "./manifest.webmanifest",
 ];
 
