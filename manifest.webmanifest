@@ -1,0 +1,20 @@
+{
+  "name": "DoriYordam — Medicine Assistant",
+  "short_name": "DoriYordam",
+  "description": "Identify a medicine from a photo, check dangerous combinations and ask an AI health assistant.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f4f7f8",
+  "theme_color": "#0b7f78",
+  "lang": "en",
+  "categories": ["health", "medical", "education"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

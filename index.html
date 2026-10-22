@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b6e69">
+  <meta name="description" content="DoriYordam — dorini suratdan aniqlash, dorilar mosligini tekshirish va AI tibbiy yordamchi.">
+  <title>DoriYordam</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="mobile-web-app-capable" content="yes">
+</head>
+<body>
+  <!-- SVG icon sprite (Lucide-style, 24px grid, 2px stroke) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></symbol>
+      <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 7V5a2 2 0 0 1 2-2h2"/><path d="M17 3h2a2 2 0 0 1 2 2v2"/><path d="M21 17v2a2 2 0 0 1-2 2h-2"/><path d="M7 21H5a2 2 0 0 1-2-2v-2"/><path d="M7 12h10"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-shield-alert" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M12 8v4"/><path d="M12 16h.01"/></symbol>
+      <symbol id="i-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
+      <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M21 4h-7"/><path d="M10 4H3"/><path d="M21 12h-9"/><path d="M8 12H3"/><path d="M21 20h-5"/><path d="M12 20H3"/><path d="M14 2v4"/><path d="M8 10v4"/><path d="M16 18v4"/></symbol>
+      <symbol id="i-pill" viewBox="0 0 24 24"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></symbol>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+      <symbol id="i-volume" viewBox="0 0 24 24"><path d="M11 4.7a.7.7 0 0 0-1.2-.5L6.4 7.6A1.4 1.4 0 0 1 5.4 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.4a1.4 1.4 0 0 1 1 .4l3.4 3.4a.7.7 0 0 0 1.2-.5z"/><path d="M16 9a5 5 0 0 1 0 6"/><path d="M19.4 18.4a9 9 0 0 0 0-12.8"/></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-check-sm" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+      <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+      <symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></symbol>
+      <symbol id="i-send" viewBox="0 0 24 24"><path d="M14.54 21.69a.5.5 0 0 0 .94-.03l6.5-19a.5.5 0 0 0-.64-.63l-19 6.5a.5.5 0 0 0-.02.94l7.93 3.18a2 2 0 0 1 1.11 1.11z"/><path d="m21.85 2.15-10.94 10.94"/></symbol>
+      <symbol id="i-baby" viewBox="0 0 24 24"><path d="M9 12h.01"/><path d="M15 12h.01"/><path d="M10 16c.5.3 1.2.5 2 .5s1.5-.2 2-.5"/><path d="M19 6.3a9 9 0 0 1 1.8 3.9 2 2 0 0 1 0 3.6 9 9 0 0 1-17.6 0 2 2 0 0 1 0-3.6A9 9 0 0 1 12 3c2 0 3.5 1.1 3.5 2.5s-.9 2.5-2 2.5c-.8 0-1.5-.4-1.5-1"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></symbol>
+      <symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+      <symbol id="i-flask" viewBox="0 0 24 24"><path d="M10 2v7.53a2 2 0 0 1-.21.9L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.07-10.13a2 2 0 0 1-.21-.9V2"/><path d="M8.5 2h7"/><path d="M7 16h10"/></symbol>
+      <symbol id="i-stetho" viewBox="0 0 24 24"><path d="M11 2v2"/><path d="M5 2v2"/><path d="M5 3H4a2 2 0 0 0-2 2v4a6 6 0 0 0 12 0V5a2 2 0 0 0-2-2h-1"/><path d="M8 15a6 6 0 0 0 12 0v-3"/><circle cx="20" cy="10" r="2"/></symbol>
+      <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
+      <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></symbol>
+      <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+      <symbol id="i-text" viewBox="0 0 24 24"><path d="M21 14h-5"/><path d="M16 16v-3.5a2.5 2.5 0 0 1 5 0V16"/><path d="M4.5 13h6"/><path d="m3 16 4.5-9 4.5 9"/></symbol>
+      <symbol id="i-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+      <symbol id="i-key" viewBox="0 0 24 24"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4"/><path d="m21 2-9.6 9.6"/><circle cx="7.5" cy="15.5" r="5.5"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+      <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></symbol>
+      <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5a2 2 0 0 0 1.44 1.44l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/></symbol>
+      <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+      <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 13h4"/><path d="M10 17h4"/></symbol>
+      <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M12 20h.01"/><path d="M8.5 16.43a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 4.18-2.65"/><path d="M19 12.86a10 10 0 0 0-2.9-2.08"/><path d="M5 12.86a10 10 0 0 1 5.17-2.69"/><path d="M22 8.82A15 15 0 0 0 11.29 5"/><path d="m2 2 20 20"/></symbol>
+    </defs>
+  </svg>
+
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="icon.svg" alt="" class="brand-logo">
+        <div><div class="brand-name">DoriYordam</div><div class="brand-sub" data-t="tagline"></div></div>
+      </div>
+      <nav class="nav" role="tablist">
+        <button class="tab active" data-view="scan" role="tab"><svg class="ic"><use href="#i-scan"/></svg><span data-t="tabScan"></span></button>
+        <button class="tab" data-view="check" role="tab"><svg class="ic"><use href="#i-shield-alert"/></svg><span data-t="tabCheck"></span><i id="badge" class="badge" hidden></i></button>
+        <button class="tab" data-view="chat" role="tab"><svg class="ic"><use href="#i-bot"/></svg><span data-t="tabChat"></span></button>
+        <button class="tab" data-view="settings" role="tab"><svg class="ic"><use href="#i-sliders"/></svg><span data-t="tabSet"></span></button>
+      </nav>
+      <div class="sidebar-foot">
+        <div class="emerg-pill"><svg class="ic"><use href="#i-phone"/></svg><span data-t="emergLine"></span></div>
+        <p data-t="disclaimer"></p>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="brand brand-mobile"><img src="icon.svg" alt="" class="brand-logo"><div class="brand-name">DoriYordam</div></div>
+        <div class="top-actions">
+          <button id="btnFont" class="icon-btn" aria-label="Font size" title="A+"><svg class="ic"><use href="#i-text"/></svg></button>
+          <div class="seg" role="group" aria-label="Language">
+            <button data-lang="en">EN</button><button data-lang="uz">UZ</button>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <!-- ============ SCAN ============ -->
+        <section id="view-scan" class="view active" aria-labelledby="h-scan">
+          <div class="hero">
+            <div class="hero-text">
+              <h1 id="h-scan" data-t="scanTitle"></h1>
+              <p data-t="scanSub"></p>
+            </div>
+          </div>
+
+          <div class="panel">
+            <label class="dropzone" id="dropzone">
+              <input type="file" id="photoInput" accept="image/*" capture="environment" hidden>
+              <img id="photoPreview" alt="" hidden>
+              <div id="dropHint" class="drop-hint">
+                <span class="drop-icon"><svg class="ic lg"><use href="#i-camera"/></svg></span>
+                <b data-t="takePhoto"></b>
+                <span class="muted small" data-t="photoTip"></span>
+              </div>
+              <button type="button" id="btnClearPhoto" class="icon-btn floating" hidden aria-label="Remove photo"><svg class="ic"><use href="#i-x"/></svg></button>
+            </label>
+            <button id="btnRecognize" class="btn primary wide" disabled><svg class="ic"><use href="#i-scan"/></svg><span data-t="recognize"></span></button>
+            <div id="scanStatus" class="status" role="status" aria-live="polite"></div>
+
+            <div class="divider"><span data-t="orType"></span></div>
+            <div class="search">
+              <svg class="ic search-ic"><use href="#i-search"/></svg>
+              <input id="manualName" class="input with-ic" data-tp="typeName" autocomplete="off" aria-autocomplete="list">
+              <button id="btnManual" class="btn primary" data-t="find"></button>
+              <ul class="suggest-list" id="manualSuggest" role="listbox" hidden></ul>
+            </div>
+            <div class="quick" id="quickChips"></div>
+          </div>
+
+          <div id="drugResult"></div>
+        </section>
+
+        <!-- ============ CHECK ============ -->
+        <section id="view-check" class="view" aria-labelledby="h-check">
+          <div class="page-head">
+            <span class="page-icon warn-tone"><svg class="ic"><use href="#i-shield-alert"/></svg></span>
+            <div><h1 id="h-check" data-t="checkTitle"></h1><p class="muted" data-t="checkSub"></p></div>
+          </div>
+          <div class="panel">
+            <div class="search">
+              <svg class="ic search-ic"><use href="#i-search"/></svg>
+              <input id="addName" class="input with-ic" data-tp="typeShort" autocomplete="off" aria-autocomplete="list">
+              <button id="btnAdd" class="btn primary"><svg class="ic"><use href="#i-plus"/></svg><span data-t="add"></span></button>
+              <ul class="suggest-list" id="addSuggest" role="listbox" hidden></ul>
+            </div>
+            <div id="addError" class="status error" role="alert"></div>
+            <div class="list-head"><b data-t="myMeds"></b><button id="btnClearList" class="link-btn" data-t="clearAll" hidden></button></div>
+            <div id="myList" class="med-list"></div>
+          </div>
+          <div id="checkSummary"></div>
+          <div id="checkResult" aria-live="polite"></div>
+        </section>
+
+        <!-- ============ AI ASSISTANT ============ -->
+        <section id="view-chat" class="view chat-view" aria-labelledby="h-chat">
+          <div class="page-head">
+            <span class="page-icon ai-tone"><svg class="ic"><use href="#i-bot"/></svg></span>
+            <div><h1 id="h-chat" data-t="chatTitle"></h1><p class="muted" data-t="chatSub"></p></div>
+          </div>
+          <div id="chatLog" class="chat-log" aria-live="polite"></div>
+          <div class="suggest-chips" id="suggest"></div>
+          <form id="chatForm" class="composer">
+            <textarea id="chatInput" rows="1" data-tp="chatPlaceholder"></textarea>
+            <button class="send-btn" id="btnSend" aria-label="Send"><svg class="ic"><use href="#i-send"/></svg></button>
+          </form>
+          <label class="toggle-row"><input type="checkbox" id="shareMeds"><span class="switch"></span><span data-t="shareMeds"></span></label>
+        </section>
+
+        <!-- ============ SETTINGS ============ -->
+        <section id="view-settings" class="view" aria-labelledby="h-set">
+          <div class="page-head">
+            <span class="page-icon"><svg class="ic"><use href="#i-sliders"/></svg></span>
+            <div><h1 id="h-set" data-t="setTitle"></h1></div>
+          </div>
+          <div class="panel">
+            <h3 class="panel-title"><svg class="ic"><use href="#i-key"/></svg><span data-t="aiKeyTitle"></span></h3>
+            <p class="muted small" data-t="aiKeySub"></p>
+            <label class="field-label" for="apiKey">API key</label>
+            <input id="apiKey" type="password" class="input" placeholder="AIza..." autocomplete="off">
+            <label class="field-label" for="apiModel" data-t="modelLabel"></label>
+            <input id="apiModel" class="input" placeholder="gemini-flash-lite-latest">
+            <button id="btnSaveKey" class="btn primary"><svg class="ic"><use href="#i-check-sm"/></svg><span data-t="save"></span></button>
+            <div id="keyStatus" class="status"></div>
+          </div>
+          <div class="panel">
+            <h3 class="panel-title"><svg class="ic"><use href="#i-lock"/></svg><span data-t="privacyTitle"></span></h3>
+            <ul class="check-list" id="privacyList"></ul>
+            <button id="btnWipe" class="btn danger"><svg class="ic"><use href="#i-trash"/></svg><span data-t="wipe"></span></button>
+          </div>
+          <div class="panel">
+            <h3 class="panel-title"><svg class="ic"><use href="#i-database"/></svg><span data-t="sourcesTitle"></span></h3>
+            <p class="muted small" data-t="sourcesText"></p>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- First-launch consent -->
+  <div id="consent" class="modal" hidden>
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="consentTitle">
+      <span class="modal-icon"><svg class="ic lg"><use href="#i-shield"/></svg></span>
+      <h2 id="consentTitle" data-t="consentTitle"></h2>
+      <p class="muted" data-t="consentSub"></p>
+      <ul class="check-list" id="consentList"></ul>
+      <button id="btnConsent" class="btn primary wide" data-t="consentOk"></button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js" defer></script>
+  <script src="drugs.js?v=8"></script>
+  <script src="db1.js?v=8"></script>
+  <script src="db2.js?v=8"></script>
+  <script src="db3.js?v=8"></script>
+  <script src="app.js?v=8"></script>
+</body>
+</html>
