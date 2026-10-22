@@ -1,6 +1,6 @@
 {
-  "name": "DoriYordam — Medicine Assistant",
-  "short_name": "DoriYordam",
+  "name": "MediScan AI — Medicine Assistant",
+  "short_name": "MediScan AI",
   "description": "Identify a medicine from a photo, check dangerous combinations and ask an AI health assistant.",
   "id": "./",
   "start_url": "./",

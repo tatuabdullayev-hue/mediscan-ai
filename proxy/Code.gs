@@ -1,4 +1,4 @@
-// DoriYordam AI proxy — Google Apps Script web app.
+// MediScan AI proxy — Google Apps Script web app.
 // Keeps the Gemini API key in Script Properties (GEMINI_API_KEY), so the public website never contains it.
 // Setup: Project Settings → Script properties → add GEMINI_API_KEY; then Deploy → Web app → "Anyone".
 
@@ -30,7 +30,7 @@ function doPost(e) {
 }
 
 function doGet() {
-  return reply(200, { ok: true, service: "DoriYordam AI proxy" });
+  return reply(200, { ok: true, service: "MediScan AI proxy" });
 }
 
 // Apps Script cannot set HTTP status codes, so the real status travels inside the JSON.

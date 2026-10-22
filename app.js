@@ -1,4 +1,4 @@
-// DoriYordam — prototype app logic.
+// MediScan AI — prototype app logic.
 // Data stays on the device (localStorage). Photos and questions go to an online service only when
 // the user presses a button: Gemini (only with the user's own API key) or openFDA (public drug labels).
 
@@ -17,7 +17,7 @@ const T = {
     moreInfo: "Batafsil: mumkin emas, homiladorlik, bolalar",
     rx: "Retsept bilan", otc: "Retseptsiz", abx: "Antibiotik",
     srcDb: "Tekshirilgan baza", srcFda: "AQSh FDA ma'lumoti", srcAi: "AI ma'lumoti",
-    sourceDb: "Manba: DoriYordam bazasi (JSST, BNF, FDA yo'riqnomalari asosida). Ma'lumot umumiy — dozani shifokoringiz belgilaydi.",
+    sourceDb: "Manba: MediScan AI bazasi (JSST, BNF, FDA yo'riqnomalari asosida). Ma'lumot umumiy — dozani shifokoringiz belgilaydi.",
     sourceFda: "Manba: openFDA — AQSh Oziq-ovqat va dori boshqarmasi rasmiy yo'riqnomasi. O'zbekistondagi shakli farq qilishi mumkin.",
     sourceAi: "Manba: Gemini AI. Bu dori bazamizda yo'q — ma'lumotni dorixonachi yoki shifokor bilan tekshiring.",
     abxWarn: "Bu antibiotik. Faqat shifokor retsepti bilan, kursni oxirigacha iching. O'zboshimchalik bilan ichish antibiotikka chidamlilikni keltirib chiqaradi.",
@@ -46,7 +46,7 @@ const T = {
     advice: "Maslahat", already: "Bu dori ro'yxatda bor.", notInDbForCheck: "Bu dori bazada yo'q — mosligini tekshirib bo'lmaydi.",
     chatTitle: "AI tibbiy yordamchi", chatSub: "Kasalligingiz yoki belgilaringiz haqida yozing — oddiy tilda tushuntiraman.",
     chatPlaceholder: "Masalan: menda gastrit bor, nima yeyishim mumkin?",
-    chatHello: "Assalomu alaykum! Men **DoriYordam AI** yordamchisiman.\n\nKasalligingiz, belgilaringiz yoki dorilaringiz haqida yozing — nima ekanini, nimalar yordam berishini va qachon shifokorga borish kerakligini oddiy tilda tushuntiraman.\n\nMen shifokor emasman va tashxis qo'ymayman.",
+    chatHello: "Assalomu alaykum! Men **MediScan AI** yordamchisiman.\n\nKasalligingiz, belgilaringiz yoki dorilaringiz haqida yozing — nima ekanini, nimalar yordam berishini va qachon shifokorga borish kerakligini oddiy tilda tushuntiraman.\n\nMen shifokor emasman va tashxis qo'ymayman.",
     shareMeds: "Dorilar ro'yxatimni AIga ko'rsatish (aniqroq javob uchun)",
     sugg: ["Menda 2-tur diabet bor, nima yeyishim mumkin?", "Qon bosimim 150/95, bu xavflimi?", "Gastritda nimalardan saqlanish kerak?", "Bolamning isitmasi 38.5, nima qilay?", "Tez-tez boshim og'riydi, sababi nima?"],
     emerg: "**Bu belgilar shoshilinch holat bo'lishi mumkin!** Darhol **103** ga qo'ng'iroq qiling yoki eng yaqin shifoxonaga boring. AI javobini kutmang.",
@@ -69,7 +69,7 @@ const T = {
       "AI suhbati saqlanmaydi — sahifani yopsangiz o'chadi.",
       "Ilova tashxis qo'ymaydi va dori buyurmaydi. Qarorni shifokor qabul qiladi.",
     ],
-    consentTitle: "DoriYordam'ga xush kelibsiz", consentSub: "Boshlashdan oldin ma'lumotlaringiz qanday himoya qilinishi bilan tanishing:",
+    consentTitle: "MediScan AI'ga xush kelibsiz", consentSub: "Boshlashdan oldin ma'lumotlaringiz qanday himoya qilinishi bilan tanishing:",
     consentOk: "Tushundim, davom etish", emergLine: "Shoshilinch yordam: 103",
     disclaimer: "O'quv prototipi (AI in Medicine, 2026). Shifokor maslahatini almashtirmaydi.",
     popular: "Ommabop:",
@@ -88,7 +88,7 @@ const T = {
     moreInfo: "More: contraindications, pregnancy, children",
     rx: "Prescription", otc: "Over the counter", abx: "Antibiotic",
     srcDb: "Verified database", srcFda: "US FDA label", srcAi: "AI information",
-    sourceDb: "Source: DoriYordam database (based on WHO, BNF and FDA labels). General information — your doctor sets the dose.",
+    sourceDb: "Source: MediScan AI database (based on WHO, BNF and FDA labels). General information — your doctor sets the dose.",
     sourceFda: "Source: openFDA — official US Food and Drug Administration label. Products in Uzbekistan may differ.",
     sourceAi: "Source: Gemini AI. This medicine is not in our database — verify with a pharmacist or doctor.",
     abxWarn: "This is an antibiotic. Take it only with a prescription and finish the course. Self-medication causes antibiotic resistance.",
@@ -117,7 +117,7 @@ const T = {
     advice: "Advice", already: "This medicine is already in the list.", notInDbForCheck: "This medicine is not in our database — interactions cannot be checked.",
     chatTitle: "AI health assistant", chatSub: "Describe your condition or symptoms — I'll explain in simple words.",
     chatPlaceholder: "e.g. I have gastritis, what can I eat?",
-    chatHello: "Hello! I'm the **DoriYordam AI** assistant.\n\nTell me about your condition, symptoms or medicines — I'll explain what it is, what helps and when to see a doctor, in simple words.\n\nI am not a doctor and I do not diagnose.",
+    chatHello: "Hello! I'm the **MediScan AI** assistant.\n\nTell me about your condition, symptoms or medicines — I'll explain what it is, what helps and when to see a doctor, in simple words.\n\nI am not a doctor and I do not diagnose.",
     shareMeds: "Share my medicine list with the AI (for better answers)",
     sugg: ["I have type 2 diabetes, what can I eat?", "My blood pressure is 150/95, is it dangerous?", "What should I avoid with gastritis?", "My child has a fever of 38.5, what should I do?", "I often get headaches — why?"],
     emerg: "**These symptoms may be an emergency!** Call **103** now or go to the nearest hospital. Do not wait for the AI.",
@@ -140,7 +140,7 @@ const T = {
       "The AI chat is not saved — it disappears when you close the page.",
       "The app does not diagnose or prescribe. Decisions are made by a doctor.",
     ],
-    consentTitle: "Welcome to DoriYordam", consentSub: "Before you start, here is how your data is protected:",
+    consentTitle: "Welcome to MediScan AI", consentSub: "Before you start, here is how your data is protected:",
     consentOk: "I understand, continue", emergLine: "Emergency: 103",
     disclaimer: "Student prototype (AI in Medicine, 2026). Does not replace medical advice.",
     popular: "Popular:",
@@ -712,7 +712,7 @@ const MENTAL = /(o'zimni o'ldir|o'lgim kel|yashagim kelmay|joniga qasd|suicid|ki
 
 function systemPrompt() {
   const meds = $("#shareMeds").checked ? myMeds.map(medObj).filter(Boolean).map(label).join(", ") : "";
-  return `You are "DoriYordam AI", a friendly health information assistant for people in Uzbekistan, many of them elderly.
+  return `You are "MediScan AI", a friendly health information assistant for people in Uzbekistan, many of them elderly.
 Rules:
 - Reply in the user's language (Uzbek Latin, Russian or English). Interface language: ${lang === "uz" ? "Uzbek" : "English"}.
 - Use very simple words, short paragraphs and bullet lists. Use **bold** for key words. Keep answers under 200 words.

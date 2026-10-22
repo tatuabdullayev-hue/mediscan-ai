@@ -1,8 +1,8 @@
-// DoriYordam service worker: keeps the app shell available offline.
+// MediScan AI service worker: keeps the app shell available offline.
 // Only same-origin files are cached; AI, Wikipedia and FDA requests always go to the network.
-const CACHE = "doriyordam-v9";
+const CACHE = "mediscan-v10";
 const SHELL = [
-  "./", "./index.html", "./style.css?v=9", "./drugs.js?v=9", "./db1.js?v=9", "./db2.js?v=9", "./db3.js?v=9", "./app.js?v=9",
+  "./", "./index.html", "./style.css?v=10", "./drugs.js?v=10", "./db1.js?v=10", "./db2.js?v=10", "./db3.js?v=10", "./app.js?v=10",
   "./icon.svg", "./icons/icon-192.png", "./icons/icon-512.png", "./manifest.webmanifest",
 ];
 

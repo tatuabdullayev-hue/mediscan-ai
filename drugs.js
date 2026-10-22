@@ -1,4 +1,4 @@
-// DoriYordam — medicine database core: record builder, interaction rules, name matching.
+// MediScan AI — medicine database core: record builder, interaction rules, name matching.
 // Drug records live in db1.js, db2.js, db3.js (loaded after this file).
 // Information is general and educational, compiled from standard references (WHO EML, BNF, FDA labels, Vidal).
 

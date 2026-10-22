@@ -1,4 +1,4 @@
-// DoriYordam medicine database — part 3: diabetes and hormones, stomach and gut, allergy and breathing,
+// MediScan AI medicine database — part 3: diabetes and hormones, stomach and gut, allergy and breathing,
 // nervous system, vitamins and others.
 // Field order: [group, forms, use, how, side, contra, pregnancy, children, note]
 

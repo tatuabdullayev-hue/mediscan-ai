@@ -1,4 +1,4 @@
-// DoriYordam medicine database — part 1: pain/fever/inflammation, antimicrobials.
+// MediScan AI medicine database — part 1: pain/fever/inflammation, antimicrobials.
 // Field order: [group, forms, use, how, side, contra, pregnancy, children, note]
 // General educational information compiled from standard references (WHO EML, BNF, FDA labels, Vidal).
 

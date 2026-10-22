@@ -1,4 +1,4 @@
-// DoriYordam medicine database — part 2: heart and blood pressure, blood thinners, cholesterol.
+// MediScan AI medicine database — part 2: heart and blood pressure, blood thinners, cholesterol.
 // Field order: [group, forms, use, how, side, contra, pregnancy, children, note]
 
 const BP_NOTE_UZ = "Bosim normallashsa ham dorini o'zboshimchalik bilan to'xtatmang. Bosimni uyda muntazam o'lchab, daftarga yozib boring.";
